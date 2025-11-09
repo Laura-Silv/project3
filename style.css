@@ -1,0 +1,241 @@
+/* ===========================
+   THEME VARIABLES — soft nature palette
+=========================== */
+:root {
+  --bg: #f7f8f6;          /* background */
+  --ink: #1f2a2e;         /* dark text */
+  --muted-ink: #4b5a60;   /* softer gray text */
+  --accent: #6fa3a6;      /* river blue */
+  --accent-2: #a3b18a;    /* sage green */
+  --card: #ffffff;        /* white card surfaces */
+  --border: #e5e8e6;      /* subtle border */
+}
+
+/* ===========================
+   BASE STYLES
+=========================== */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: "Poppins", sans-serif;
+  line-height: 1.6;
+  text-align: left;
+}
+
+.container {
+  max-width: 1000px;
+  margin-inline: auto;
+  padding: 1.25rem;
+}
+
+/* ===========================
+   HEADER WITH BACKGROUND IMAGE
+=========================== */
+.site-header {
+  position: relative;
+  background: url("waback.jpg") center center / cover no-repeat;
+  color: white;
+  text-align: center;
+  padding: 6rem 1rem;
+}
+
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* dark overlay */
+}
+
+.site-header .container {
+  position: relative;
+  z-index: 1;
+}
+
+.site-header h1 {
+  font-family: "Merriweather", serif;
+  font-size: clamp(2rem, 3vw + 1rem, 3rem);
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+}
+
+.site-header .lede {
+  font-weight: 400;
+  color: #f0f0f0;
+  max-width: 40em;
+  margin: 0 auto;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* ===========================
+   HEADINGS
+=========================== */
+h2 {
+  font-weight: 600;
+  font-size: 1.4rem;
+  margin-top: 1.5rem;
+  border-left: 4px solid var(--accent);
+  padding-left: 0.6rem;
+}
+h3 {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-top: 0.75rem;
+}
+
+/* ===========================
+   CARD SECTIONS (intro, facts, etc.)
+=========================== */
+.intro, .attractions, .facts {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+  margin-block: 1rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,.04);
+}
+
+/* ===========================
+   APPLE-STYLE MINIMALIST ATTRACTIONS
+=========================== */
+.attraction {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid var(--border);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease;
+}
+.attraction.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* alternate image positions */
+.attraction:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* images */
+.attraction img {
+  flex: 1 1 45%;
+  max-width: 480px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+  border: none;
+  transition: transform 0.4s ease;
+}
+.attraction img:hover {
+  transform: scale(1.03);
+}
+
+/* text side */
+.attraction div {
+  flex: 1 1 50%;
+}
+.attraction h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+.attraction p {
+  font-size: 1rem;
+  color: var(--muted-ink);
+  line-height: 1.6;
+  max-width: 32em;
+}
+.attraction a {
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+}
+.attraction a:hover {
+  text-decoration: underline;
+}
+
+/* responsive stacking */
+@media (max-width: 820px) {
+  .attraction {
+    flex-direction: column;
+    text-align: center;
+  }
+  .attraction:nth-child(even) {
+    flex-direction: column;
+  }
+  .attraction img {
+    width: 100%;
+    max-width: 100%;
+  }
+  .attraction p {
+    margin-inline: auto;
+  }
+}
+
+/* ===========================
+   ASIDE FACTS
+=========================== */
+.facts ul {
+  padding-left: 1.2rem;
+  margin: .2rem 0 0;
+}
+.facts li {
+  margin: .3rem 0;
+}
+
+/* ===========================
+   FOOTER
+=========================== */
+.site-footer {
+  margin-top: 2rem;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding-bottom: 1rem;
+}
+.site-footer .citations {
+  margin-top: .5rem;
+}
+.site-footer ol {
+  margin: .5rem 0 0;
+  padding-left: 1.2rem;
+}
+.site-footer li {
+  margin: .35rem 0;
+  color: var(--muted-ink);
+  font-size: .95rem;
+}
+
+/* ===========================
+   LINKS
+=========================== */
+a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+a:hover, a:focus { color: var(--accent-2); }
+
+/* ===========================
+   ACCESSIBILITY FOCUS
+=========================== */
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ===========================
+   MEDIA TYPOGRAPHY ADJUSTMENT
+=========================== */
+@media (max-width: 500px) {
+  h2 {
+    font-size: 1.2rem;
+  }
+  .site-header h1 {
+    font-size: 2rem;
+  }
+}
